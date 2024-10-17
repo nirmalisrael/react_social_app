@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+      "baseUrl": "./src",     // Tells VSCode that the base directory for your imports is 'src'
+      "paths": {
+        "*": ["*"]            // This allows VSCode to resolve all components and files inside the 'src' folder
+      }
+    },
+    "include": ["src"]         // Only include the 'src' folder in VSCode's scope
+  }
+  

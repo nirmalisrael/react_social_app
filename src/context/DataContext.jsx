@@ -19,24 +19,21 @@ export const DataProvider = ({ children }) => {
     const { width } = useWindowSize();
     const { data, fetchError, isLoading } = useAxiosFetch('https://671724bc3fcb11b265d49b0b.mockapi.io/posts');
 
-    // useEffect(() => {
-    // 	const fetchPosts = async () => {
-    // 		try {
-    // 			const response = await api.get('/posts');
-    // 			setPosts(response.data);
-    // 		} catch (err) {
-    // 			if (err.response) {
-    // 				console.log(err.response.data);
-    // 				console.log(err.response.status);
-    // 				console.log(err.response.headers);
-    // 			} else {
-    // 				console.log(`Error : ${err.message}`);
-    // 			}
-    // 		}
-    // 	}
-
-    // 	fetchPosts();
-    // }, []);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await api.get('/posts');
+                setPosts(response.data);
+            } catch (error) {
+                console.log("Error fetching posts:", error);
+            }
+        };
+    
+        const intervalId = setInterval(fetchData, 2000); // Fetch every 2 seconds
+    
+        return () => clearInterval(intervalId); // Clean up on component unmount
+    }, []);
+    
     useEffect(() => {
         setPosts(data);
     }, [data]);

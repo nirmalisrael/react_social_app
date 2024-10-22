@@ -17,7 +17,7 @@ export const DataProvider = ({ children }) => {
     const [editBody, setEditBody] = useState('');
     const navigate = useNavigate();
     const { width } = useWindowSize();
-    const { data, fetchError, isLoading } = useAxiosFetch('http://localhost:8080/posts');
+    const { data, fetchError, isLoading } = useAxiosFetch('https://671724bc3fcb11b265d49b0b.mockapi.io/posts');
 
     // useEffect(() => {
     // 	const fetchPosts = async () => {
